@@ -1,4 +1,4 @@
-Deep Research Assistant (Concise README)
+Deep Research Assistant
 A privacy-friendly research tool that performs multi-step analysis with local or cloud LLMs and integrated search. Run it fully offline or connect to services like Claude/GPT for more capability.
 
 Highlights
