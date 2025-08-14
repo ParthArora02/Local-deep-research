@@ -1,52 +1,86 @@
-Deep Research Assistant
-A privacy-friendly research tool that performs multi-step analysis with local or cloud LLMs and integrated search. Run it fully offline or connect to services like Claude/GPT for more capability.
+# Deep Research Assistant
 
-Highlights
-In-depth research: multi-iteration reasoning, follow-up questioning, full-page parsing, citation tracking.
+A privacy-friendly research tool that performs multi-step analysis with local or cloud LLMs and integrated search.  
+Run it fully offline or connect to services like Claude/GPT for more capability.
 
-Flexible models: Ollama locally; Claude/GPT via API; works with LangChain models; configurable per task.
+---
 
-Output formats: detailed reports with citations, concise summaries, source logs.
+## Highlights
 
-Privacy-first: local-only mode, configurable search behavior, transparent data use.
+- **In-depth research**: multi-iteration reasoning, follow-up questioning, full-page parsing, citation tracking.  
+- **Flexible models**: Ollama locally; Claude/GPT via API; works with LangChain models; configurable per task.  
+- **Output formats**: detailed reports with citations, concise summaries, source logs.  
+- **Privacy-first**: local-only mode, configurable search behavior, transparent data use.  
+- **Powerful search**: smart engine auto-pick; Wikipedia, arXiv, DuckDuckGo, SerpAPI, The Guardian; local RAG; full-page retrieval; source filtering.
 
-Powerful search: smart engine auto-pick; Wikipedia, arXiv, DuckDuckGo, SerpAPI, The Guardian; local RAG; full-page retrieval; source filtering.
+---
 
-Quick Start
-Clone and install
+## Quick Start
 
-bash
+### Clone and install
+
+```bash
 git clone https://github.com/yourusername/local-deep-research.git
 cd local-deep-research
 pip install -r requirements.txt
-Optional: local models with Ollama
+```
 
-bash
- install from https://ollama.ai
+---
+
+### Optional: local models with Ollama
+
+```bash
+# Install from https://ollama.ai
 ollama pull mistral
-Configure environment
+```
 
-bash
+---
+
+### Configure environment
+
+```bash
 cp .env.template .env
-then edit:
+```
+
+Then edit `.env`:
+
+```
 ANTHROPIC_API_KEY=...
 OPENAI_API_KEY=...
 GUARDIAN_API_KEY=...
-Run
-CLI:
+```
 
-bash
+---
+
+### Run
+
+**CLI:**
+
+```bash
 python main.py
-Web app:
+```
 
-bash
+**Web app:**
+
+```bash
 python app.py
-Opens at http://127.0.0.1:5000
+```
 
-Web UI includes a dashboard, live status, history, PDF export, and run management.
+Opens at:  
+[http://127.0.0.1:5000](http://127.0.0.1:5000)
 
-Configuration (config.py)
-python
+**Web UI includes:**
+- Dashboard
+- Live status
+- History
+- PDF export
+- Run management
+
+---
+
+## Configuration (`config.py`)
+
+```python
 DEFAULT_MODEL = "mistral"
 DEFAULT_TEMPERATURE = 0.7
 MAX_TOKENS = 8000
@@ -58,10 +92,15 @@ SAFE_SEARCH = True
 SEARCH_SNIPPETS_ONLY = False
 
 search_tool = "auto"  # auto-picks best engine
-Local RAG Search
-Create collections in local_collections.py:
+```
 
-python
+---
+
+## Local RAG Search
+
+Create collections in `local_collections.py`:
+
+```python
 LOCAL_COLLECTIONS = {
   "research_papers": {
     "paths": ["<abs>/local_search_files/research_papers"],
@@ -74,43 +113,63 @@ LOCAL_COLLECTIONS = {
     "chunk_size": 500, "chunk_overlap": 100, "enabled": True
   }
 }
+```
+
 Prepare folders:
 
-bash
+```bash
 mkdir -p local_search_files/research_papers
 mkdir -p local_search_files/personal_notes
-Use RAG:
+```
 
-Smart: set search_tool="auto"
+---
 
-Specific: search_tool="research_papers"
+### Use RAG
 
-All local: search_tool="local_all"
+- **Smart:**  
+  `search_tool="auto"`
 
-Inline targeting: collection:research_papers your query
+- **Specific:**  
+  `search_tool="research_papers"`
 
-Search Backends
-auto (intelligent routing)
+- **All local:**  
+  `search_tool="local_all"`
 
-wiki (encyclopedic)
+- **Inline targeting:**  
+  `collection:research_papers your query`
 
-arxiv (academic)
+---
 
-duckduckgo (general, no API)
+## Search Backends
 
-guardian (news, API)
+- `auto` (intelligent routing)  
+- `wiki` (encyclopedic)  
+- `arxiv` (academic)  
+- `duckduckgo` (general, no API)  
+- `guardian` (news, API)  
+- `serp` (Google via API)  
+- Any defined local collection  
 
-serp (Google via API)
+💡 *Auto mode routes to the most relevant source (e.g., arXiv for papers, news engines for current events).*
 
-any defined local collection
+---
 
-Tip: Auto mode routes to the most relevant source (e.g., arXiv for papers, news engines for current events).
+## License
 
-License
-MIT. See LICENSE.
+MIT. See [LICENSE](LICENSE).
 
-Credits
+---
+
+## Credits
+
 Ollama, Wikipedia, arXiv, DuckDuckGo, The Guardian, SerpAPI, LangChain, jusText, Playwright, FAISS, sentence-transformers.
 
-Contributing
-Fork 2) Branch 3) Commit 4) Push 5) Open PR
+---
+
+## Contributing
+
+1. Fork  
+2. Branch  
+3. Commit  
+4. Push  
+5. Open PR
