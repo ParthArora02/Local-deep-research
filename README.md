@@ -22,13 +22,13 @@ pip install -r requirements.txt
 Optional: local models with Ollama
 
 bash
-# install from https://ollama.ai
+ install from https://ollama.ai
 ollama pull mistral
 Configure environment
 
 bash
 cp .env.template .env
-# then edit:
+then edit:
 ANTHROPIC_API_KEY=...
 OPENAI_API_KEY=...
 GUARDIAN_API_KEY=...
